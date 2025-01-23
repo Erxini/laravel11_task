@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();//controla si el dato esta borrado o no
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
