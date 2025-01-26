@@ -16,8 +16,9 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title');
             $table->string('description');
-            $table->unsignedBigInteger('user_id');//unsignedBigInteger es mas ancho
+            $table->unsignedBigInteger('user_id'); //unsignedBigInteger es mas ancho
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->rememberToken();
             $table->softDeletes();
         });
     }
