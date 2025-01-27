@@ -16,8 +16,10 @@
                     <td class="border border-gray-300 px-4 py-2">{{ $task->title }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ $task->description }}</td>
                     <td class="border border-gray-300 px-4 py-2 flex gap-2 justify-center">
-                        <button class="bg-yellow-400 text-black px-4 py-1 rounded hover:bg-yellow-500">Editar</button>
-                        <button class="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">Borrar</button>
+                        <button class="bg-yellow-400 text-black px-4 py-1 rounded hover:bg-yellow-500"
+                            wire:click="openCreateModal({{ $task->id }})">Editar</button>
+                        <button class=" bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
+                            wire:click="deleteTask({{ $task->id }})">Eliminar</button>
                     </td>
                 </tr>
                 @endforeach
@@ -46,8 +48,8 @@
                 </form>
                 <div class="space-y-3">
                     <button class="w-full bg-black text-white py-2 rounded-full font-medium hover:bg-gray-800"
-                        wire:click.prevent="createTask">
-                        Crear tarea
+                        wire:click.prevent="createorUpdateTask">
+                        {{ $isUpdating ? 'Modificar Tarea' : 'Crear Tarea' }}
                     </button>
                     <button class="w-full border border-gray-300 py-2 rounded-full font-medium text-gray-600 hover:bg-gray-300"
                         wire:click="closeCreateModal">

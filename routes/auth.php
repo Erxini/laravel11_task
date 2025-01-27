@@ -4,6 +4,10 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
+Route::get('/', function () {
+    return view('welcome'); //redirige a la pagina de bienvenida para elegir entre login y register
+})->name('home');
+
 Route::middleware('guest')->group(function () {
     Volt::route('register', 'pages.auth.register')
         ->name('register');
